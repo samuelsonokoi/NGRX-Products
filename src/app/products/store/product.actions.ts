@@ -6,11 +6,11 @@ export const loadProducts = createAction(
 );
 
 export const loadProductsSuccess = createAction(
-  '[Product list component] Load Products Success',
+  '[Product Effects] Load Products Success',
   props<{ products: Product[] }>()
 );
 
 export const loadProductsFailure = createAction(
-  '[Product list component] Load Products Failure',
+  '[Product Effects] Load Products Failure',
   props<{ error: any }>()
 );
