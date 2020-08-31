@@ -8,21 +8,32 @@ import { ProductComponent } from "./components/product/product.component";
 import { ProductAddComponent } from "./components/product-add/product-add.component";
 import { ProductEditComponent } from "./components/product-edit/product-edit.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
+import { StoreModule } from "@ngrx/store";
+import * as fromProductState from "./store";
 
 @NgModule({
   declarations: [
     ProductComponent,
     ProductAddComponent,
     ProductEditComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
-  imports: [CommonModule, ProductsRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    ProductsRoutingModule,
+    FormsModule,
+    StoreModule.forFeature(
+      fromProductState.productStateFeatureKey,
+      fromProductState.reducers,
+      { metaReducers: fromProductState.metaReducers }
+    ),
+  ],
   providers: [ProductService],
   exports: [
     ProductComponent,
     ProductAddComponent,
     ProductEditComponent,
-    ProductListComponent
-  ]
+    ProductListComponent,
+  ],
 })
 export class ProductsModule {}
